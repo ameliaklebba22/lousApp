@@ -11,16 +11,25 @@ var gr = 0
 var ho = 0
 var ca = 0
 
-var phone = 777777777
-var name = "Bob"
-
+var phone = "777777777"
+var firstName = "Bob"
+var lastName = "Smith"
     
     
-    init(n: String, numb: Int){
-        name = n
-        //phone = numb
+    init(f: String, l: String, numb: String){
+        firstName = f
+        lastName = l
+        phone = numb
         
     }
+    
+    
+    func getName()->String{
+        
+        return firstName
+    }
+    
+    
     
     
     

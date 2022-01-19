@@ -3,8 +3,9 @@ import UIKit
 class secondViewController: UIViewController,UITableViewDelegate, UITableViewDataSource  {
 
     @IBOutlet weak var tableViewOutlet: UITableView!
-    
-    
+    var savee = ""
+    var emps: [employeeCO] = []
+    var select = 0
     @IBOutlet weak var addButtonOutlet: UIButton!
         
     override func viewDidLoad() {
@@ -18,14 +19,13 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // students.count
-       10
+       emps.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
        
-        cell.textLabel?.text = "hi"
+        cell.textLabel?.text = String(emps[indexPath.row].firstName)
         return cell
     }
     
@@ -34,17 +34,20 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-               if segue.identifier == "moving"{
-               let nvc = segue.destination as! carryOutProfileViewController
-                   
-               }
-               else{
-               }
-           }
+        if segue.identifier == "moving"{
+        let nvc = segue.destination as! carryOutProfileViewController
+            nvc.inc = emps
+            nvc.incc = select
+        }
+        else{
+        }
+        }
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           select = indexPath.row
            performSegue(withIdentifier: "moving", sender: nil)
+        
        }
 
     
@@ -54,19 +57,33 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     
     @IBAction func addButton(_ sender: UIButton) {
-        addButtonOutlet.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+    showAlert()
     }
-    
-    
-    @objc private func showAlert(){
+
+    func showAlert(){
     let alertt = UIAlertController(title: "Add a New Employee", message: "Enter the employee information.", preferredStyle: .alert)
         
         //adding options
         alertt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: nil))
+        alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { ale in
+         
+            guard let fields = alertt.textFields, fields.count == 3 else{
+                return
+            }
+            
+            let firstField = fields[0]
+            let secondField = fields[1]
+            let numberField = fields[2]
+            
+            self.emps.append(employeeCO.init(f: firstField.text!, l: secondField.text!, numb: numberField.text!))
+            self.tableViewOutlet.reloadData()
+
+        }))
         
+        
+                         
         //adding fields
-        alertt.addTextField { field in
+       alertt.addTextField { field in
             field.placeholder = "First Name"
             field.returnKeyType = .next
             field.keyboardType = .default
@@ -83,32 +100,27 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             
         }
         
-        //read values
-        guard let fields = alertt.textFields, fields.count == 3 else{
-            return
+      
+        
+ present(alertt, animated: true)
+        
         }
         
-        let firstField = fields[0]
-        let secondField = fields[1]
-        let numberField = fields[2]
-        
-//        guard let firstName = firstField.text, !firstName.isEmpty, let lastName = secondField.text, !lastName.isEmpty, let phoneNum = numberField.text, !phoneNum.isEmpty else{
-//            print("invalid entries")
-//            return
-//        }
         
         
-        
-        present(alertt, animated: true)
 
-       
-        
-        
-        
+
     }
 
 
 
+
+
+
+    
+
+
+
     
     
     
@@ -119,4 +131,4 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     
 
-}
+
