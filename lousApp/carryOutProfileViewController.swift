@@ -1,10 +1,3 @@
-//
-//  carryOutProfileViewController.swift
-//  lousApp
-//
-//  Created by amelia klebba on 1/10/22.
-//
-
 import UIKit
 
 class carryOutProfileViewController: UIViewController {
@@ -24,7 +17,6 @@ class carryOutProfileViewController: UIViewController {
     @IBOutlet weak var numberOutlet: UILabel!
     @IBOutlet weak var nameOutlet: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,9 +31,7 @@ class carryOutProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setAllSkills()
-        print("holo")
     }
-    
     
     
     
@@ -150,6 +140,14 @@ class carryOutProfileViewController: UIViewController {
     }
     
     
+    
+   
+    
+   
+    @IBAction func pooo(_ sender: Any) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     
     

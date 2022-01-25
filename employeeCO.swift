@@ -24,10 +24,7 @@ var lastName = "Smith"
     }
     
     
-    func getName()->String{
-        
-        return firstName
-    }
+    
     
     
     
