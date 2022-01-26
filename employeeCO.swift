@@ -1,7 +1,7 @@
 import Foundation
 
 
-class employeeCO{
+class employeeCO: Codable{
     
 var ph = 0
 var ru = 0

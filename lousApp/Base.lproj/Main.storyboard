@@ -161,6 +161,18 @@
                                     <action selector="addButton:" destination="uIV-it-YPa" eventType="touchUpInside" id="c0w-kg-SWe"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEl-NM-HLu">
+                                <rect key="frame" x="20" y="59" width="76" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="save">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="save:" destination="uIV-it-YPa" eventType="touchUpInside" id="08w-Dt-PPf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="td2-Eb-TAm"/>
                         <color key="backgroundColor" systemColor="systemGray5Color"/>
@@ -305,29 +317,27 @@
                                     </switch>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tw8-6p-knj">
-                                <rect key="frame" x="4" y="37" width="115" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="←">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="40"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="pooo:" destination="eCf-lW-0h9" eventType="touchUpInside" id="kAm-qJ-EBo"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RlM-0u-4hG">
+                                <rect key="frame" x="94" y="698" width="226" height="74"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="62"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ayv-D4-1mY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ayv-D4-1mY" firstAttribute="trailing" secondItem="feQ-Id-tNq" secondAttribute="trailing" constant="106" id="3VC-ct-cY9"/>
+                            <constraint firstItem="RlM-0u-4hG" firstAttribute="top" secondItem="oGI-st-lTw" secondAttribute="bottom" constant="40.5" id="4c7-4c-5CQ"/>
                             <constraint firstItem="Ayv-D4-1mY" firstAttribute="trailing" secondItem="jJL-Ak-LZS" secondAttribute="trailing" constant="20" id="7OB-LT-YLv"/>
                             <constraint firstItem="oGI-st-lTw" firstAttribute="leading" secondItem="ePM-Eu-aFu" secondAttribute="trailing" constant="34.5" id="84T-sl-yRt"/>
+                            <constraint firstItem="Ayv-D4-1mY" firstAttribute="bottom" secondItem="RlM-0u-4hG" secondAttribute="bottom" constant="36" id="8IH-Fp-3NZ"/>
                             <constraint firstItem="oGI-st-lTw" firstAttribute="top" secondItem="7pa-81-Qio" secondAttribute="bottom" constant="48" id="ARA-aF-re1"/>
                             <constraint firstItem="jJL-Ak-LZS" firstAttribute="top" secondItem="Ayv-D4-1mY" secondAttribute="top" constant="50" id="DwP-Hr-fFR"/>
                             <constraint firstItem="7pa-81-Qio" firstAttribute="top" secondItem="feQ-Id-tNq" secondAttribute="bottom" constant="6" id="EGq-h4-zUs"/>
                             <constraint firstItem="Ayv-D4-1mY" firstAttribute="trailing" secondItem="7pa-81-Qio" secondAttribute="trailing" constant="106" id="KZx-g8-JZb"/>
                             <constraint firstItem="feQ-Id-tNq" firstAttribute="top" secondItem="jJL-Ak-LZS" secondAttribute="bottom" constant="3" id="RWF-zd-xA5"/>
+                            <constraint firstItem="Ayv-D4-1mY" firstAttribute="trailing" secondItem="RlM-0u-4hG" secondAttribute="trailing" constant="94" id="Yqe-UB-VKw"/>
                             <constraint firstItem="ePM-Eu-aFu" firstAttribute="top" secondItem="jJL-Ak-LZS" secondAttribute="bottom" constant="127" id="cBb-qI-YHS"/>
                             <constraint firstItem="Ayv-D4-1mY" firstAttribute="bottom" secondItem="ePM-Eu-aFu" secondAttribute="bottom" constant="152" id="dDu-V9-D5L"/>
                             <constraint firstItem="7pa-81-Qio" firstAttribute="top" secondItem="feQ-Id-tNq" secondAttribute="bottom" constant="6" id="e4U-Y8-G3e"/>
@@ -337,6 +347,7 @@
                             <constraint firstItem="jJL-Ak-LZS" firstAttribute="leading" secondItem="Ayv-D4-1mY" secondAttribute="leading" constant="20" id="nWB-90-DgB"/>
                             <constraint firstItem="Ayv-D4-1mY" firstAttribute="trailing" secondItem="oGI-st-lTw" secondAttribute="trailing" constant="227" id="oB4-Kw-Gcf"/>
                             <constraint firstItem="ePM-Eu-aFu" firstAttribute="leading" secondItem="Ayv-D4-1mY" secondAttribute="leading" constant="20" id="sOh-iT-83f"/>
+                            <constraint firstItem="RlM-0u-4hG" firstAttribute="leading" secondItem="Ayv-D4-1mY" secondAttribute="leading" constant="94" id="tDi-jH-SEU"/>
                             <constraint firstItem="oGI-st-lTw" firstAttribute="top" secondItem="7pa-81-Qio" secondAttribute="bottom" constant="48" id="vYz-Ch-H0j"/>
                             <constraint firstItem="7pa-81-Qio" firstAttribute="leading" secondItem="Ayv-D4-1mY" secondAttribute="leading" constant="106" id="xXb-wt-V9V"/>
                         </constraints>
@@ -351,6 +362,7 @@
                         <outlet property="lastOutlet" destination="feQ-Id-tNq" id="lFx-wQ-nHS"/>
                         <outlet property="nameOutlet" destination="jJL-Ak-LZS" id="cR9-6Q-ObP"/>
                         <outlet property="numberOutlet" destination="7pa-81-Qio" id="NfZ-Im-ETG"/>
+                        <outlet property="pay" destination="RlM-0u-4hG" id="Gbi-Ji-RXK"/>
                         <outlet property="phonesSwitch" destination="ghg-Kd-V59" id="0RM-JE-0X9"/>
                         <outlet property="runnerSwitch" destination="RRb-7e-rKa" id="1am-te-Mqu"/>
                         <outlet property="timesSwicth" destination="Yzq-EY-Kuj" id="wVf-j5-pWc"/>

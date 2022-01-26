@@ -11,11 +11,14 @@ class carryOutProfileViewController: UIViewController {
     @IBOutlet weak var greetSwitch: UISwitch!
     @IBOutlet weak var hostSwitch: UISwitch!
     @IBOutlet weak var cashSwitch: UISwitch!
-    
+    var payy = 11.00
     
     @IBOutlet weak var lastOutlet: UILabel!
     @IBOutlet weak var numberOutlet: UILabel!
     @IBOutlet weak var nameOutlet: UILabel!
+    @IBOutlet weak var pay: UILabel!
+    
+    var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +34,23 @@ class carryOutProfileViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setAllSkills()
+        setPay()
     }
+    
+    
+    
+    func setPay(){
+        payy = 11
+        var add = inc[incc].ph + inc[incc].ru + inc[incc].ba + inc[incc].ti + inc[incc].gr + inc[incc].ho + inc[incc].ca
+        
+        
+        payy = payy + 0.25 * Double(add)
+        
+        pay.text = "$ \(String(payy))"
+        
+
+    }
+    
     
     
     
@@ -40,9 +59,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func phonesChange(_ sender: UISwitch) {
         if phonesSwitch.isOn == true{
             inc[incc].ph = 1
+            setPay()
         }
         else {
             inc[incc].ph = 0
+            setPay()
         }
     }
     
@@ -50,9 +71,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func runnerChange(_ sender: UISwitch) {
         if runnerSwitch.isOn == true{
             inc[incc].ru = 1
+            setPay()
         }
         else {
             inc[incc].ru = 0
+            setPay()
         }
         
     }
@@ -60,9 +83,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func bagChange(_ sender: UISwitch) {
         if bagSwitch.isOn == true{
             inc[incc].ba = 1
+            setPay()
         }
         else {
             inc[incc].ba = 0
+            setPay()
         }
     }
     
@@ -70,9 +95,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func timesChange(_ sender: UISwitch) {
         if timesSwicth.isOn == true{
             inc[incc].ti = 1
+            setPay()
         }
         else {
             inc[incc].ti = 0
+            setPay()
         }
     }
     
@@ -80,9 +107,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func greetChange(_ sender: UISwitch) {
         if greetSwitch.isOn == true{
             inc[incc].gr = 1
+            setPay()
         }
         else {
             inc[incc].gr = 0
+            setPay()
         }
     }
     
@@ -90,9 +119,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func hostChange(_ sender: UISwitch) {
         if hostSwitch.isOn == true{
             inc[incc].ho = 1
+            setPay()
         }
         else {
             inc[incc].ho = 0
+            setPay()
         }
     }
     
@@ -102,9 +133,11 @@ class carryOutProfileViewController: UIViewController {
     @IBAction func cashChange(_ sender: UISwitch) {
         if cashSwitch.isOn == true{
             inc[incc].ca = 1
+            setPay()
         }
         else {
             inc[incc].ca = 0
+            setPay()
         }
     }
     
@@ -151,9 +184,12 @@ class carryOutProfileViewController: UIViewController {
     
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    }
     
     
     
     
-    
-}
+

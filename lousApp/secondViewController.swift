@@ -22,7 +22,29 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         self.picker.delegate = self
         self.picker.dataSource = self
         pickerData = ["All", "Phones", "Runner", "Bag", "Times", "Greet", "Host","Cash"]
+   
+        if let items = UserDefaults.standard.data(forKey: "theEmployees2"){
+            let decoder = JSONDecoder()
+            if let decoded = try? decoder.decode([employeeCO].self, from: items){
+                emps = decoded
+                secondViewController.presentt = emps
+            }
+        }
+    
+    
     }
+    
+    
+    
+
+    @IBAction func save(_ sender: Any) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(emps){
+            UserDefaults.standard.set(encoded, forKey: "theEmployees2")
+        }
+    }
+    
+    
     
     
    //picker view stuff
@@ -229,9 +251,10 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "moving"{
         let nvc = segue.destination as! carryOutProfileViewController
-        nvc.modalPresentationStyle = .fullScreen
+        //nvc.modalPresentationStyle = .fullScreen
         nvc.inc =  secondViewController.presentt
         nvc.incc = select
+        nvc.tableView = tableViewOutlet
         }
         else{
         }
