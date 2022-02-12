@@ -1,4 +1,5 @@
 import UIKit
+import iPhoneNumberField
 
 class secondViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource  {
    
@@ -8,8 +9,12 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var savee = ""
     var emps: [employeeCO] = []
     static var presentt: [employeeCO] = []
-
+    var fakePresent: [employeeCO] = []
+    var stayNumbers: [Int] = []
+    var stayNumbers2: [Int] = []
     var select = 0
+    var numberOne = 0
+    var numberTwo = 0
     @IBOutlet weak var addButtonOutlet: UIButton!
     @IBOutlet weak var picker: UIPickerView!
     var pickerData: [String] = [String]()
@@ -23,33 +28,26 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         self.picker.dataSource = self
         pickerData = ["All", "Phones", "Runner", "Bag", "Times", "Greet", "Host","Cash"]
    
-        if let items = UserDefaults.standard.data(forKey: "theEmployees2"){
+        if let items = UserDefaults.standard.data(forKey: "theEmployees3"){
             let decoder = JSONDecoder()
             if let decoded = try? decoder.decode([employeeCO].self, from: items){
                 emps = decoded
+                //self.tableViewOutlet.reloadData()
                 secondViewController.presentt = emps
             }
         }
-    
+        print("this is the number")
+        print(emps.count)
     
     }
-    
     
     
 
-    @IBAction func save(_ sender: Any) {
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(emps){
-            UserDefaults.standard.set(encoded, forKey: "theEmployees2")
-        }
-    }
-    
-    
     
     
    //picker view stuff
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+    1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -63,99 +61,310 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         secondViewController.presentt.removeAll()
         switch row{
-        case 0:
-            for blah in emps{
-            secondViewController.presentt.append(blah)
-            self.tableViewOutlet.reloadData()
-            }
-            
-        case 1:
-            //phones
-            for blah in emps{
-                if blah.ph == 1{
+                case 0:
+                    for blah in emps{
                     secondViewController.presentt.append(blah)
                     self.tableViewOutlet.reloadData()
-                }
-                self.tableViewOutlet.reloadData()
-            }
+                    }
                     
-            case 2:
-                //runner
-                for blah in emps{
-                    if blah.ru == 1{
-                        secondViewController.presentt.append(blah)
+                case 1:
+                    //phones
+                    for blah in emps{
+                        if blah.ph == 1{
+                            secondViewController.presentt.append(blah)
+                            self.tableViewOutlet.reloadData()
+                        }
                         self.tableViewOutlet.reloadData()
                     }
-                    self.tableViewOutlet.reloadData()
+                            
+                    case 2:
+                        //runner
+                        for blah in emps{
+                            if blah.ru == 1{
+                                secondViewController.presentt.append(blah)
+                                self.tableViewOutlet.reloadData()
+                            }
+                            self.tableViewOutlet.reloadData()
+                        }
+                case 3:
+                    //bag
+                    for blah in emps{
+                        if blah.ba == 1{
+                            secondViewController.presentt.append(blah)
+                            self.tableViewOutlet.reloadData()
+                        }
+                        self.tableViewOutlet.reloadData()
+                    }
+                case 4:
+                    //times
+                    for blah in emps{
+                        if blah.ti == 1{
+                            secondViewController.presentt.append(blah)
+                            self.tableViewOutlet.reloadData()
+                        }
+                        self.tableViewOutlet.reloadData()
+                    }
+                case 5:
+                    //greet
+                    for blah in emps{
+                        if blah.gr == 1{
+                            secondViewController.presentt.append(blah)
+                            self.tableViewOutlet.reloadData()
+                        }
+                        self.tableViewOutlet.reloadData()
+                    }
+                case 6:
+                    //host
+                    for blah in emps{
+                        if blah.ho == 1{
+                            secondViewController.presentt.append(blah)
+                            self.tableViewOutlet.reloadData()
+                        }
+                        self.tableViewOutlet.reloadData()
+                    }
+                case 7:
+                    //cash
+                    for blah in emps{
+                        if blah.ca == 1{
+                            secondViewController.presentt.append(blah)
+                            self.tableViewOutlet.reloadData()
+                        }
+                        self.tableViewOutlet.reloadData()
+                    }
+                default:
+                    print("5")
                 }
-        case 3:
-            //bag
-            for blah in emps{
-                if blah.ba == 1{
-                    secondViewController.presentt.append(blah)
-                    self.tableViewOutlet.reloadData()
                 }
-                self.tableViewOutlet.reloadData()
-            }
-        case 4:
-            //times
-            for blah in emps{
-                if blah.ti == 1{
-                    secondViewController.presentt.append(blah)
-                    self.tableViewOutlet.reloadData()
-                }
-                self.tableViewOutlet.reloadData()
-            }
-        case 5:
-            //greet
-            for blah in emps{
-                if blah.gr == 1{
-                    secondViewController.presentt.append(blah)
-                    self.tableViewOutlet.reloadData()
-                }
-                self.tableViewOutlet.reloadData()
-            }
-        case 6:
-            //host
-            for blah in emps{
-                if blah.ho == 1{
-                    secondViewController.presentt.append(blah)
-                    self.tableViewOutlet.reloadData()
-                }
-                self.tableViewOutlet.reloadData()
-            }
-        case 7:
-            //cash
-            for blah in emps{
-                if blah.ca == 1{
-                    secondViewController.presentt.append(blah)
-                    self.tableViewOutlet.reloadData()
-                }
-                self.tableViewOutlet.reloadData()
-            }
+                
+        
+        
+        
+        
+        
+        
+        
+//        secondViewController.presentt.removeAll()
+//        stayNumbers.removeAll()
+//        if component == 0{
+//        switch row{
+//        case 0:
+//            for blah in emps{
+//            fakePresent.append(blah)
+//            stayNumbers.append(0)
+//            numberOne = 0
+//            self.tableViewOutlet.reloadData()
+//            }
+//
+//        case 1:
+//            //phones
+//            for blah in emps{
+//                if blah.ph == 1{
+//                fakePresent.append(blah)
+//                stayNumbers.append(1)
+//                }
+//                numberOne = 1
+//                stayNumbers.append(0)
+//            }
+//
+//          case 2:
+//                //runner
+//                for blah in emps{
+//                    if blah.ru == 1{
+//                    fakePresent.append(blah)
+//                    stayNumbers.append(2)
+//                    }
+//                    numberOne = 2
+//                    stayNumbers.append(0)
+//                }
+//        case 3:
+//            //bag
+//            for blah in emps{
+//                if blah.ba == 1{
+//                fakePresent.append(blah)
+//                stayNumbers.append(3)
+//                }
+//                numberOne = 3
+//                stayNumbers.append(0)
+//            }
+//
+//        case 4:
+//            //times
+//            for blah in emps{
+//                if blah.ti == 1{
+//                fakePresent.append(blah)
+//                stayNumbers.append(4)
+//                }
+//                numberOne = 4
+//                stayNumbers.append(0)
+//            }
+//        case 5:
+//            //greet
+//            for blah in emps{
+//                if blah.gr == 1{
+//                fakePresent.append(blah)
+//                stayNumbers.append(5)
+//                }
+//                numberOne = 5
+//                stayNumbers.append(0)
+//
+//            }
+//
+//        case 6:
+//            //host
+//            for blah in emps{
+//                if blah.ho == 1{
+//                fakePresent.append(blah)
+//                stayNumbers.append(6)
+//                }
+//                numberOne = 6
+//                stayNumbers.append(0)
+//            }
+//
+//        case 7:
+//            //cash
+//            for blah in emps{
+//                if blah.ca == 1{
+//                fakePresent.append(blah)
+//                stayNumbers.append(7)
+//                }
+//                numberOne = 7
+//                stayNumbers.append(0)
+//            }
+//
+//        default:
+//            print("defaul")
+//
+//        }
+//        print("first stay numbers")
+//            print(stayNumbers.count)
+//        }
+//
+//        if component == 1{
+//        //var another = 0
+//        switch row{
+//        case 0:
+//            for blah in emps{
+//            fakePresent.append(blah)
+//            stayNumbers2.append(0)
+//            numberOne = 0
+//            self.tableViewOutlet.reloadData()
+//            }
+//
+//        case 1:
+//            //phones
+//            for blah in emps{
+//                if blah.ph == 1{
+//                fakePresent.append(blah)
+//                stayNumbers2.append(1)
+//                }
+//                numberOne = 1
+//                stayNumbers2.append(0)
+//            }
+//
+//          case 2:
+//                //runner
+//                for blah in emps{
+//                    if blah.ru == 1{
+//                    fakePresent.append(blah)
+//                    stayNumbers2.append(2)
+//                    }
+//                    numberOne = 2
+//                    stayNumbers2.append(0)
+//                }
+//        case 3:
+//            //bag
+//            for blah in emps{
+//                if blah.ba == 1{
+//                fakePresent.append(blah)
+//                stayNumbers2.append(3)
+//                }
+//                numberOne = 3
+//                stayNumbers2.append(0)
+//            }
+//
+//        case 4:
+//            //times
+//            for blah in emps{
+//                if blah.ti == 1{
+//                fakePresent.append(blah)
+//                stayNumbers2.append(4)
+//
+//                }
+//                numberOne = 4
+//                stayNumbers2.append(0)
+//            }
+//        case 5:
+//            //greet
+//            for blah in emps{
+//                if blah.gr == 1{
+//                fakePresent.append(blah)
+//                stayNumbers2.append(5)
+//                }
+//                numberOne = 5
+//                stayNumbers2.append(0)
+//            }
+//
+//        case 6:
+//            //host
+//            for blah in emps{
+//                if blah.ho == 1{
+//                fakePresent.append(blah)
+//                stayNumbers2.append(6)
+//                }
+//                numberOne = 6
+//                stayNumbers2.append(0)
+//            }
+//
+//        case 7:
+//            //cash
+//            for blah in emps{
+//                if blah.ca == 1{
+//                fakePresent.append(blah)
+//                stayNumbers2.append(7)
+//
+//                }
+//                numberOne = 7
+//                stayNumbers2.append(0)
+//            }
+//
+//        default:
+//            print("defaul")
+//
+//        }
+//        }
+//
+//
+//
+//
+//
+//       var x = 0
+//        while x < fakePresent.count {
+//
+//            if stayNumbers2.count > 0 {
+//            if stayNumbers[x] + stayNumbers2[x] == numberOne + numberTwo{
+//                secondViewController.presentt.append(fakePresent[x])
+//            }
+//            x = x + 1
+//        }
+//            else{
+//                secondViewController.presentt.append(fakePresent[x])
+//
+//            }
+//        }
+//
+//        self.tableViewOutlet.reloadData()
+//       // stayNumbers.removeAll()
+//        fakePresent.removeAll()
+//        print("stay numbers at end")
+//        print(stayNumbers.count)
+//
+//
+//
+//    }
+//
 
-        default:
-            print("5")
+        
 
-
-
-        }
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
-    
-
-    
     //table view stuff
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         secondViewController.presentt.count
@@ -173,8 +382,8 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
              emps.remove(at: indexPath.row)
              secondViewController.presentt.remove(at: indexPath.row)
              tableView.deleteRows(at: [indexPath], with: .fade)
-             
          }
+         callSave()
      }
 
     
@@ -255,6 +464,8 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         nvc.inc =  secondViewController.presentt
         nvc.incc = select
         nvc.tableView = tableViewOutlet
+        nvc.myself = self
+            
         }
         else{
         }
@@ -282,10 +493,9 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             let numberField = fields[2]
             
             self.emps.append(employeeCO.init(f: firstField.text!, l: secondField.text!, numb: numberField.text!))
-            //why do i need self
             secondViewController.presentt = self.emps
             self.tableViewOutlet.reloadData()
-            
+            self.callSave()
         }))
         
         
@@ -301,39 +511,28 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             field.returnKeyType = .continue
             field.keyboardType = .default
         }
-        alertt.addTextField { field in
+        
+            alertt.addTextField{ field in
             field.placeholder = "Phone Number"
             field.returnKeyType = .continue
             field.keyboardType = .numberPad
-            
         }
             present(alertt, animated: true)
+            callSave()
         }
         
-    
-    
-        override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.tableViewOutlet.reloadData()
+  
+
+    func callSave(){
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(emps){
+        print("in encoded")
+        UserDefaults.standard.set(encoded, forKey: "theEmployees3")
+        }
+        print("saving...")
+        print(emps.count)
     }
-    
-    
-    
-    
-    
-    
 
-
-
-
-
-
-    
-
-
-
-    
-    
     
     
     

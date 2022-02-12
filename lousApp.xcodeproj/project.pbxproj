@@ -21,6 +21,7 @@
 		6E8809E1278C7663001297A0 /* lousAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809E0278C7663001297A0 /* lousAppUITestsLaunchTests.swift */; };
 		6E8809EE278C7A1D001297A0 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809ED278C7A1D001297A0 /* secondViewController.swift */; };
 		6E8809F0278C7A35001297A0 /* carryOutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809EF278C7A35001297A0 /* carryOutProfileViewController.swift */; };
+		6EC82F1F27A970F800DADCD3 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 6EC82F1E27A970F800DADCD3 /* iPhoneNumberField */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EC82F1F27A970F800DADCD3 /* iPhoneNumberField in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +160,9 @@
 			dependencies = (
 			);
 			name = lousApp;
+			packageProductDependencies = (
+				6EC82F1E27A970F800DADCD3 /* iPhoneNumberField */,
+			);
 			productName = lousApp;
 			productReference = 6E8809B7278C7661001297A0 /* lousApp.app */;
 			productType = "com.apple.product-type.application";
@@ -230,6 +235,9 @@
 				Base,
 			);
 			mainGroup = 6E8809AE278C7661001297A0;
+			packageReferences = (
+				6EC82F1D27A970F800DADCD3 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
+			);
 			productRefGroup = 6E8809B8278C7661001297A0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -640,6 +648,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6EC82F1D27A970F800DADCD3 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MojtabaHs/iPhoneNumberField";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6EC82F1E27A970F800DADCD3 /* iPhoneNumberField */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6EC82F1D27A970F800DADCD3 /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
+			productName = iPhoneNumberField;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6E8809C3278C7661001297A0 /* lousApp.xcdatamodeld */ = {

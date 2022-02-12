@@ -11,6 +11,8 @@ var gr = 0
 var ho = 0
 var ca = 0
 
+    
+var notes = "Notes:"
 var phone = "777777777"
 var firstName = "Bob"
 var lastName = "Smith"
