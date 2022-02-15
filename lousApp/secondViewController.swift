@@ -10,8 +10,8 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     var emps: [employeeCO] = []
     static var presentt: [employeeCO] = []
     var fakePresent: [employeeCO] = []
-    var stayNumbers: [Int] = []
-    var stayNumbers2: [Int] = []
+    var stayNumbersOne: [Int] = []
+    var stayNumbersTwo: [Int] = []
     var select = 0
     var numberOne = 0
     var numberTwo = 0
@@ -47,95 +47,274 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
    //picker view stuff
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    1
+    2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-         pickerData.count
+        if component == 0{
+        return pickerData.count
+        }
+        else{
+        return pickerData.count
+        }
     }
+    
+    
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
+        
+        if component == 0{
+        return pickerData[row]
+        }
+        else{
+        return pickerData[row]
+        }
+        
+        
+        
     }
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         secondViewController.presentt.removeAll()
-        switch row{
-                case 0:
-                    for blah in emps{
-                    secondViewController.presentt.append(blah)
-                    self.tableViewOutlet.reloadData()
-                    }
-                    
-                case 1:
-                    //phones
-                    for blah in emps{
-                        if blah.ph == 1{
-                            secondViewController.presentt.append(blah)
-                            self.tableViewOutlet.reloadData()
-                        }
-                        self.tableViewOutlet.reloadData()
-                    }
-                            
-                    case 2:
-                        //runner
-                        for blah in emps{
-                            if blah.ru == 1{
-                                secondViewController.presentt.append(blah)
-                                self.tableViewOutlet.reloadData()
-                            }
-                            self.tableViewOutlet.reloadData()
-                        }
-                case 3:
-                    //bag
-                    for blah in emps{
-                        if blah.ba == 1{
-                            secondViewController.presentt.append(blah)
-                            self.tableViewOutlet.reloadData()
-                        }
-                        self.tableViewOutlet.reloadData()
-                    }
-                case 4:
-                    //times
-                    for blah in emps{
-                        if blah.ti == 1{
-                            secondViewController.presentt.append(blah)
-                            self.tableViewOutlet.reloadData()
-                        }
-                        self.tableViewOutlet.reloadData()
-                    }
-                case 5:
-                    //greet
-                    for blah in emps{
-                        if blah.gr == 1{
-                            secondViewController.presentt.append(blah)
-                            self.tableViewOutlet.reloadData()
-                        }
-                        self.tableViewOutlet.reloadData()
-                    }
-                case 6:
-                    //host
-                    for blah in emps{
-                        if blah.ho == 1{
-                            secondViewController.presentt.append(blah)
-                            self.tableViewOutlet.reloadData()
-                        }
-                        self.tableViewOutlet.reloadData()
-                    }
-                case 7:
-                    //cash
-                    for blah in emps{
-                        if blah.ca == 1{
-                            secondViewController.presentt.append(blah)
-                            self.tableViewOutlet.reloadData()
-                        }
-                        self.tableViewOutlet.reloadData()
-                    }
-                default:
-                    print("5")
-                }
-                }
-                
+        stayNumbersTwo.removeAll()
+        stayNumbersOne.removeAll()
+        numberTwo = 0
+        numberOne = 0
+        
+        if component == 0 {
+              switch row{
+              case 0:
+              for blah in emps{
+              stayNumbersOne.append(0)
+              numberOne = 0
+              }
+    
+              case 1:
+              //phones
+              for blah in emps{
+              numberOne = 1
+              if blah.ph == 1{
+              stayNumbersOne.append(1)
+              }
+              else {
+              stayNumbersOne.append(0)
+              }
+              }
+      
+             case 2:
+             //runner
+             for blah in emps{
+             numberOne = 2
+             if blah.ru == 1{
+             stayNumbersOne.append(2)
+             }
+             else {
+             stayNumbersOne.append(0)
+             }
+             }
+                  
+             case 3:
+             //bag
+             for blah in emps{
+             numberOne = 3
+             if blah.ba == 1{
+             stayNumbersOne.append(3)
+             }
+             else {
+             stayNumbersOne.append(0)
+             }
+             }
+                  
+             case 4:
+             //times
+             for blah in emps{
+             numberOne = 4
+             if blah.ti == 1{
+             stayNumbersOne.append(4)
+             }
+             else {
+             stayNumbersOne.append(0)
+             }
+             }
+                  
+             case 5:
+             //greet
+             for blah in emps{
+             numberOne = 5
+             if blah.gr == 1{
+             stayNumbersOne.append(5)
+             }
+             else {
+             stayNumbersOne.append(0)
+             }
+             }
+                  
+            case 6:
+            //host
+            for blah in emps{
+            numberOne = 6
+            if blah.ho == 1{
+            stayNumbersOne.append(6)
+            }
+            else {
+            stayNumbersOne.append(0)
+            }
+            }
+            
+            case 7:
+            //cash
+            for blah in emps{
+            numberOne = 7
+            if blah.ca == 1{
+            stayNumbersOne.append(7)
+            }
+            else {
+            stayNumbersOne.append(0)
+            }
+            }
+                  
+            default:
+            print("5")
+    }
+    }
+        
+        if component == 1 {
+              switch row{
+              case 0:
+              for blah in emps{
+              stayNumbersTwo.append(0)
+              numberOne = 0
+              }
+    
+              case 1:
+              //phones
+              for blah in emps{
+              numberTwo = 1
+              if blah.ph == 1{
+              stayNumbersTwo.append(1)
+              }
+              else {
+              stayNumbersTwo.append(0)
+              }
+              }
+      
+             case 2:
+             //runner
+             for blah in emps{
+             numberTwo = 2
+             if blah.ru == 1{
+             stayNumbersTwo.append(2)
+             }
+             else {
+             stayNumbersTwo.append(0)
+             }
+             }
+                  
+             case 3:
+             //bag
+             for blah in emps{
+             numberTwo = 3
+             if blah.ba == 1{
+             stayNumbersTwo.append(3)
+             }
+             else {
+             stayNumbersTwo.append(0)
+             }
+             }
+                  
+             case 4:
+             //times
+             for blah in emps{
+             numberTwo = 4
+             if blah.ti == 1{
+             stayNumbersTwo.append(4)
+             }
+             else {
+             stayNumbersTwo.append(0)
+             }
+             }
+                  
+             case 5:
+             //greet
+             for blah in emps{
+             numberTwo = 5
+             if blah.gr == 1{
+             stayNumbersTwo.append(5)
+             }
+             else {
+             stayNumbersTwo.append(0)
+             }
+             }
+                  
+            case 6:
+            //host
+            for blah in emps{
+            numberTwo = 6
+            if blah.ho == 1{
+            stayNumbersTwo.append(6)
+            }
+            else {
+            stayNumbersTwo.append(0)
+            }
+            }
+            
+            case 7:
+            //cash
+            for blah in emps{
+            numberTwo = 7
+            if blah.ca == 1{
+            stayNumbersTwo.append(7)
+            }
+            else {
+            stayNumbersTwo.append(0)
+            }
+            }
+                  
+            default:
+            print("5")
+    }
+    }
+        
+        
+        if stayNumbersOne.count == 0{
+            var u = 0
+            for blah in emps{
+               
+            if stayNumbersTwo[u] == numberTwo{
+            secondViewController.presentt.append(blah)
+            u = u + 1
+            }
+            }
+        }
+        
+        else if stayNumbersTwo.count == 0{
+            var u = 0
+            for blah in emps{
+               
+            if stayNumbersOne[u] == numberOne{
+            secondViewController.presentt.append(blah)
+            u = u + 1
+            }
+            }
+        }
+        
+        
+        else{
+        
+            var u = 0
+            for blah in emps{
+            if stayNumbersOne[u] + stayNumbersTwo[u] == numberTwo + numberOne {
+            secondViewController.presentt.append(blah)
+            u = u + 1
+            }
+            }
+        }
+        
+        
+       self.tableViewOutlet.reloadData()
+
         
         
         
@@ -143,225 +322,19 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         
         
         
-//        secondViewController.presentt.removeAll()
-//        stayNumbers.removeAll()
-//        if component == 0{
-//        switch row{
-//        case 0:
-//            for blah in emps{
-//            fakePresent.append(blah)
-//            stayNumbers.append(0)
-//            numberOne = 0
-//            self.tableViewOutlet.reloadData()
-//            }
-//
-//        case 1:
-//            //phones
-//            for blah in emps{
-//                if blah.ph == 1{
-//                fakePresent.append(blah)
-//                stayNumbers.append(1)
-//                }
-//                numberOne = 1
-//                stayNumbers.append(0)
-//            }
-//
-//          case 2:
-//                //runner
-//                for blah in emps{
-//                    if blah.ru == 1{
-//                    fakePresent.append(blah)
-//                    stayNumbers.append(2)
-//                    }
-//                    numberOne = 2
-//                    stayNumbers.append(0)
-//                }
-//        case 3:
-//            //bag
-//            for blah in emps{
-//                if blah.ba == 1{
-//                fakePresent.append(blah)
-//                stayNumbers.append(3)
-//                }
-//                numberOne = 3
-//                stayNumbers.append(0)
-//            }
-//
-//        case 4:
-//            //times
-//            for blah in emps{
-//                if blah.ti == 1{
-//                fakePresent.append(blah)
-//                stayNumbers.append(4)
-//                }
-//                numberOne = 4
-//                stayNumbers.append(0)
-//            }
-//        case 5:
-//            //greet
-//            for blah in emps{
-//                if blah.gr == 1{
-//                fakePresent.append(blah)
-//                stayNumbers.append(5)
-//                }
-//                numberOne = 5
-//                stayNumbers.append(0)
-//
-//            }
-//
-//        case 6:
-//            //host
-//            for blah in emps{
-//                if blah.ho == 1{
-//                fakePresent.append(blah)
-//                stayNumbers.append(6)
-//                }
-//                numberOne = 6
-//                stayNumbers.append(0)
-//            }
-//
-//        case 7:
-//            //cash
-//            for blah in emps{
-//                if blah.ca == 1{
-//                fakePresent.append(blah)
-//                stayNumbers.append(7)
-//                }
-//                numberOne = 7
-//                stayNumbers.append(0)
-//            }
-//
-//        default:
-//            print("defaul")
-//
-//        }
-//        print("first stay numbers")
-//            print(stayNumbers.count)
-//        }
-//
-//        if component == 1{
-//        //var another = 0
-//        switch row{
-//        case 0:
-//            for blah in emps{
-//            fakePresent.append(blah)
-//            stayNumbers2.append(0)
-//            numberOne = 0
-//            self.tableViewOutlet.reloadData()
-//            }
-//
-//        case 1:
-//            //phones
-//            for blah in emps{
-//                if blah.ph == 1{
-//                fakePresent.append(blah)
-//                stayNumbers2.append(1)
-//                }
-//                numberOne = 1
-//                stayNumbers2.append(0)
-//            }
-//
-//          case 2:
-//                //runner
-//                for blah in emps{
-//                    if blah.ru == 1{
-//                    fakePresent.append(blah)
-//                    stayNumbers2.append(2)
-//                    }
-//                    numberOne = 2
-//                    stayNumbers2.append(0)
-//                }
-//        case 3:
-//            //bag
-//            for blah in emps{
-//                if blah.ba == 1{
-//                fakePresent.append(blah)
-//                stayNumbers2.append(3)
-//                }
-//                numberOne = 3
-//                stayNumbers2.append(0)
-//            }
-//
-//        case 4:
-//            //times
-//            for blah in emps{
-//                if blah.ti == 1{
-//                fakePresent.append(blah)
-//                stayNumbers2.append(4)
-//
-//                }
-//                numberOne = 4
-//                stayNumbers2.append(0)
-//            }
-//        case 5:
-//            //greet
-//            for blah in emps{
-//                if blah.gr == 1{
-//                fakePresent.append(blah)
-//                stayNumbers2.append(5)
-//                }
-//                numberOne = 5
-//                stayNumbers2.append(0)
-//            }
-//
-//        case 6:
-//            //host
-//            for blah in emps{
-//                if blah.ho == 1{
-//                fakePresent.append(blah)
-//                stayNumbers2.append(6)
-//                }
-//                numberOne = 6
-//                stayNumbers2.append(0)
-//            }
-//
-//        case 7:
-//            //cash
-//            for blah in emps{
-//                if blah.ca == 1{
-//                fakePresent.append(blah)
-//                stayNumbers2.append(7)
-//
-//                }
-//                numberOne = 7
-//                stayNumbers2.append(0)
-//            }
-//
-//        default:
-//            print("defaul")
-//
-//        }
-//        }
-//
-//
-//
-//
-//
-//       var x = 0
-//        while x < fakePresent.count {
-//
-//            if stayNumbers2.count > 0 {
-//            if stayNumbers[x] + stayNumbers2[x] == numberOne + numberTwo{
-//                secondViewController.presentt.append(fakePresent[x])
-//            }
-//            x = x + 1
-//        }
-//            else{
-//                secondViewController.presentt.append(fakePresent[x])
-//
-//            }
-//        }
-//
-//        self.tableViewOutlet.reloadData()
-//       // stayNumbers.removeAll()
-//        fakePresent.removeAll()
-//        print("stay numbers at end")
-//        print(stayNumbers.count)
-//
-//
-//
-//    }
-//
+        
+        
+        
+        
+        
+        
+        
+    }
+              
+
+
+    
+
 
         
 
