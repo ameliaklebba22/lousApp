@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6E2538CA279AF1670015CCA1 /* CrazyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2538C9279AF1670015CCA1 /* CrazyCell.swift */; };
+		6E7293E127BE863C00665A17 /* CrazyCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7293E027BE863C00665A17 /* CrazyCell2.swift */; };
+		6E7293E327BE87BE00665A17 /* thirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7293E227BE87BE00665A17 /* thirdViewController.swift */; };
+		6E7293E527BE880400665A17 /* employeeKitchen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7293E427BE880400665A17 /* employeeKitchen.swift */; };
 		6E7E8827278DC0E900D8D35A /* employeeCO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7E8826278DC0E900D8D35A /* employeeCO.swift */; };
 		6E8809BB278C7661001297A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809BA278C7661001297A0 /* AppDelegate.swift */; };
 		6E8809BD278C7661001297A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809BC278C7661001297A0 /* SceneDelegate.swift */; };
@@ -22,6 +25,7 @@
 		6E8809EE278C7A1D001297A0 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809ED278C7A1D001297A0 /* secondViewController.swift */; };
 		6E8809F0278C7A35001297A0 /* carryOutProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8809EF278C7A35001297A0 /* carryOutProfileViewController.swift */; };
 		6EC82F1F27A970F800DADCD3 /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 6EC82F1E27A970F800DADCD3 /* iPhoneNumberField */; };
+		6EFA772527BBE81500229589 /* kitchenProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFA772427BBE81500229589 /* kitchenProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		6E2538C9279AF1670015CCA1 /* CrazyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrazyCell.swift; sourceTree = "<group>"; };
+		6E7293E027BE863C00665A17 /* CrazyCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrazyCell2.swift; sourceTree = "<group>"; };
+		6E7293E227BE87BE00665A17 /* thirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thirdViewController.swift; sourceTree = "<group>"; };
+		6E7293E427BE880400665A17 /* employeeKitchen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = employeeKitchen.swift; sourceTree = "<group>"; };
 		6E7E8826278DC0E900D8D35A /* employeeCO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = employeeCO.swift; sourceTree = "<group>"; };
 		6E8809B7278C7661001297A0 /* lousApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lousApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E8809BA278C7661001297A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 		6E8809E0278C7663001297A0 /* lousAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lousAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6E8809ED278C7A1D001297A0 /* secondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 		6E8809EF278C7A35001297A0 /* carryOutProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carryOutProfileViewController.swift; sourceTree = "<group>"; };
+		6EFA772427BBE81500229589 /* kitchenProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kitchenProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +99,6 @@
 		6E8809AE278C7661001297A0 = {
 			isa = PBXGroup;
 			children = (
-				6E7E8826278DC0E900D8D35A /* employeeCO.swift */,
 				6E8809B9278C7661001297A0 /* lousApp */,
 				6E8809D3278C7663001297A0 /* lousAppTests */,
 				6E8809DD278C7663001297A0 /* lousAppUITests */,
@@ -112,13 +119,18 @@
 		6E8809B9278C7661001297A0 /* lousApp */ = {
 			isa = PBXGroup;
 			children = (
+				6EFA772427BBE81500229589 /* kitchenProfileViewController.swift */,
+				6E8809EF278C7A35001297A0 /* carryOutProfileViewController.swift */,
+				6E7E8826278DC0E900D8D35A /* employeeCO.swift */,
+				6E7293E427BE880400665A17 /* employeeKitchen.swift */,
 				6E8809BA278C7661001297A0 /* AppDelegate.swift */,
 				6E8809BC278C7661001297A0 /* SceneDelegate.swift */,
 				6E8809BE278C7661001297A0 /* ViewController.swift */,
 				6E8809C0278C7661001297A0 /* Main.storyboard */,
-				6E8809EF278C7A35001297A0 /* carryOutProfileViewController.swift */,
-				6E2538C9279AF1670015CCA1 /* CrazyCell.swift */,
 				6E8809ED278C7A1D001297A0 /* secondViewController.swift */,
+				6E7293E227BE87BE00665A17 /* thirdViewController.swift */,
+				6E2538C9279AF1670015CCA1 /* CrazyCell.swift */,
+				6E7293E027BE863C00665A17 /* CrazyCell2.swift */,
 				6E8809C6278C7663001297A0 /* Assets.xcassets */,
 				6E8809C8278C7663001297A0 /* LaunchScreen.storyboard */,
 				6E8809CB278C7663001297A0 /* Info.plist */,
@@ -281,9 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E7293E127BE863C00665A17 /* CrazyCell2.swift in Sources */,
 				6E8809C5278C7661001297A0 /* lousApp.xcdatamodeld in Sources */,
+				6EFA772527BBE81500229589 /* kitchenProfileViewController.swift in Sources */,
 				6E7E8827278DC0E900D8D35A /* employeeCO.swift in Sources */,
 				6E8809BF278C7661001297A0 /* ViewController.swift in Sources */,
+				6E7293E327BE87BE00665A17 /* thirdViewController.swift in Sources */,
+				6E7293E527BE880400665A17 /* employeeKitchen.swift in Sources */,
 				6E2538CA279AF1670015CCA1 /* CrazyCell.swift in Sources */,
 				6E8809BB278C7661001297A0 /* AppDelegate.swift in Sources */,
 				6E8809F0278C7A35001297A0 /* carryOutProfileViewController.swift in Sources */,
