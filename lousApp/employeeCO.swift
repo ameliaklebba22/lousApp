@@ -16,7 +16,7 @@ var notes = "Notes:"
 var phone = "777777777"
 var firstName = "Bob"
 var lastName = "Smith"
-    
+var empPay = 11.00
     
     init(f: String, l: String, numb: String){
         firstName = f

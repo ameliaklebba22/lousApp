@@ -17,6 +17,8 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
     var select = 0
     var numberOne = 0
     var numberTwo = 0
+    var sortBy = 1
+    @IBOutlet weak var sortingButton: UIButton!
     @IBOutlet weak var picker: UIPickerView!
     @IBOutlet weak var addButtonOutlet: UIButton!
     var pickerData: [String] = [String]()
@@ -28,9 +30,9 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
         anotherTableView.dataSource = self
         self.picker.delegate = self
         self.picker.dataSource = self
-        pickerData = ["All", "Dish", "Pantry", "Appetizers", "Steam", "Ovens", "Saucing","Toppings","Prep"]
+        pickerData = ["Any", "Dish", "Pantry", "Appetizers", "Steam", "Ovens", "Saucing","Toppings","Prep"]
    
-        if let items = UserDefaults.standard.data(forKey: "theEmployees4"){
+        if let items = UserDefaults.standard.data(forKey: "theEmployees6"){
             let decoder = JSONDecoder()
             if let decoded = try? decoder.decode([employeeKitchen].self, from: items){
                 emps = decoded
@@ -71,15 +73,16 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     //picker view
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("this is emps")
-        print(emps.count)
-        thirdViewController.anotherPresent.removeAll()
-        stayNumbersTwo.removeAll()
-        stayNumbersOne.removeAll()
-        numberTwo = 0
-        numberOne = 0
+       
+          thirdViewController.anotherPresent.removeAll()
+//        stayNumbersTwo.removeAll()
+//        stayNumbersOne.removeAll()
+//        numberTwo = 0
+//        numberOne = 0
         
         if component == 0 {
+            stayNumbersOne.removeAll()
+            numberOne = 0
               switch row{
               case 0:
               for blah in emps{
@@ -179,6 +182,8 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
         
         if component == 1 {
+            stayNumbersTwo.removeAll()
+            numberTwo = 0
               switch row{
               case 0:
               for blah in emps{
@@ -293,8 +298,9 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
                
             if stayNumbersTwo[u] == numberTwo{
             thirdViewController.anotherPresent.append(blah)
-            u = u + 1
             }
+                u = u + 1
+
             }
         }
         
@@ -304,8 +310,9 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
                
             if stayNumbersOne[u] == numberOne{
         thirdViewController.anotherPresent.append(blah)
-            u = u + 1
             }
+                u = u + 1
+
             }
         }
         
@@ -316,27 +323,22 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
             for blah in emps{
             if stayNumbersOne[u] + stayNumbersTwo[u] == numberTwo + numberOne {
             thirdViewController.anotherPresent.append(blah)
-            u = u + 1
             }
+                u = u + 1
+
             }
         }
         
+      
+            thirdViewController.anotherPresent = thirdViewController.anotherPresent.sorted { (nameOne, nameTwo) -> Bool in
+                        let nameOne = nameOne.lastName
+                let nameTwo = nameTwo.lastName
+                        return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+            }
+        
         
        self.anotherTableView.reloadData()
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+ 
         
     }
               
@@ -471,7 +473,7 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         //adding options
         alertt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { ale in
+        alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { [self] ale in
          
             guard let fields = alertt.textFields, fields.count == 3 else{
                 return
@@ -483,6 +485,23 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
             
             self.emps.append(employeeKitchen.init(f: firstField.text!, l: secondField.text!, numb: numberField.text!))
             thirdViewController.anotherPresent = self.emps
+            
+            
+            
+            
+            
+                thirdViewController.anotherPresent = thirdViewController.anotherPresent.sorted { (nameOne, nameTwo) -> Bool in
+                            let nameOne = nameOne.lastName
+                    let nameTwo = nameTwo.lastName
+                            return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+        
+            }
+            
+            
+            
+            
+            
+            
             self.anotherTableView.reloadData()
             self.callSave()
         }))
@@ -513,15 +532,91 @@ class thirdViewController: UIViewController,UITableViewDelegate, UITableViewData
   
 
     func callSave(){
+        
+      
+            emps = emps.sorted { (nameOne, nameTwo) -> Bool in
+            let nameOne = nameOne.lastName
+            let nameTwo = nameTwo.lastName
+            return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+            
+        }
+        
+        
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(emps){
         print("in encoded")
-        UserDefaults.standard.set(encoded, forKey: "theEmployees4")
+        UserDefaults.standard.set(encoded, forKey: "theEmployees6")
         }
         print("saving...")
         print(emps.count)
     }
+    
+    
+    
+    
 
+   
+            
+            
+                             
+        
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    @IBAction func sortingButton(_ sender: Any) {
+//
+//        if sortBy % 2 == 0{
+//        sortingButton.setTitle("FIRST", for: .normal)
+//        sortBy = sortBy + 1
+//            emps = emps.sorted { (nameOne, nameTwo) -> Bool in
+//            let nameOne = nameOne.firstName
+//            let nameTwo = nameTwo.firstName
+//            return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+//
+//            }
+//        }
+//        else{
+//        sortingButton.setTitle("LAST", for: .normal)
+//        sortBy = sortBy + 1
+//            emps = emps.sorted { (nameOne, nameTwo) -> Bool in
+//            let nameOne = nameOne.lastName
+//            let nameTwo = nameTwo.lastName
+//            return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+//
+//            }
+//        }
+//
+//
+//
+//
+//
+//    }
+    
+    
+    
     
     
     

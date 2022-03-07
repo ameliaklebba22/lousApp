@@ -1,8 +1,12 @@
 import UIKit
 
 class carryOutProfileViewController: UIViewController,UITextFieldDelegate, UITextViewDelegate {
+    
+    
+    
     var inc: [employeeCO] = []
     var incc = 0
+    var payy = 11.00
     var myself: secondViewController!
     @IBOutlet weak var phonesSwitch: UISwitch!
     @IBOutlet weak var runnerSwitch: UISwitch!
@@ -11,12 +15,11 @@ class carryOutProfileViewController: UIViewController,UITextFieldDelegate, UITex
     @IBOutlet weak var greetSwitch: UISwitch!
     @IBOutlet weak var hostSwitch: UISwitch!
     @IBOutlet weak var cashSwitch: UISwitch!
-    var payy = 11.00
     @IBOutlet weak var lastOutlet: UILabel!
     @IBOutlet weak var nameOutlet: UILabel!
     @IBOutlet weak var notesOutlet: UITextView!
-    @IBOutlet weak var pay: UILabel!
     @IBOutlet weak var phoneeOutlet: UIButton!
+    @IBOutlet weak var payLabel: UILabel!
     var tableView: UITableView!
 
     
@@ -28,6 +31,8 @@ class carryOutProfileViewController: UIViewController,UITextFieldDelegate, UITex
         notesOutlet.text! = inc[incc].notes
         notesOutlet.delegate = self
         setAllSkills()
+        self.setupLabelTap()
+
        
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -68,10 +73,11 @@ class carryOutProfileViewController: UIViewController,UITextFieldDelegate, UITex
     }
         
     func setPay(){
-    payy = 11
+        payy = inc[incc].empPay
     var add = inc[incc].ph + inc[incc].ru + inc[incc].ba + inc[incc].ti + inc[incc].gr + inc[incc].ho + inc[incc].ca
-    payy = payy + 0.25 * Double(add)
-    pay.text = "$\(String(payy))"
+        payy = payy + 0.25 * Double(add)
+        payLabel.text = "$\(String(payy))"
+        
     }
     
     
@@ -189,14 +195,9 @@ class carryOutProfileViewController: UIViewController,UITextFieldDelegate, UITex
         }
     }
     
-//    @IBAction func pooo(_ sender: Any) {
-//           dismiss(animated: true, completion: nil)
-//       }
-    
-    
-    
     override func viewWillDisappear(_ animated: Bool) {
         inc[incc].notes = notesOutlet.text
+       // inc[incc].p
         tableView.reloadData()
         myself.callSave()
     }
@@ -212,17 +213,60 @@ class carryOutProfileViewController: UIViewController,UITextFieldDelegate, UITex
     }
     
     
+    //CHANGING PAY
+   
+    @objc func labelTapped(_ sender: UITapGestureRecognizer) {
+        let alertt = UIAlertController(title: "Change Base Pay?", message: "Enter new pay information.", preferredStyle: .alert);            alertt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { [self] ale in
+            guard let fields = alertt.textFields, fields.count == 1 else{
+            return
+            }
+            
+            let newPay = fields[0]
+            self.inc[self.incc].empPay = Double(newPay.text!)!
+            self.setPay()
+            }))
+    
+            //adding fields
+           alertt.addTextField { field in
+           field.placeholder = "New Pay"
+           field.returnKeyType = .next
+           field.keyboardType = .default
+            }
+           
+            present(alertt, animated: true)
+}
+        
     
     
+    
+    
+    func setupLabelTap() {
+    let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+    self.payLabel.isUserInteractionEnabled = true
+    self.payLabel.addGestureRecognizer(labelTap)
+    }
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
-    
-    
-    
-    
-    
-    
-    
-    
-
-

@@ -26,9 +26,9 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         tableViewOutlet.dataSource = self
         self.picker.delegate = self
         self.picker.dataSource = self
-        pickerData = ["All", "Phones", "Runner", "Bag", "Times", "Greet", "Host","Cash"]
+        pickerData = ["Any", "Phones", "Runner", "Bag", "Times", "Greet", "Host","Cash"]
    
-        if let items = UserDefaults.standard.data(forKey: "theEmployees3"){
+        if let items = UserDefaults.standard.data(forKey: "theEmployees5"){
             let decoder = JSONDecoder()
             if let decoded = try? decoder.decode([employeeCO].self, from: items){
                 emps = decoded
@@ -77,15 +77,15 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("this is emps")
-        print(emps.count)
-        secondViewController.presentt.removeAll()
-        stayNumbersTwo.removeAll()
-        stayNumbersOne.removeAll()
-        numberTwo = 0
-        numberOne = 0
+         secondViewController.presentt.removeAll()
+        //stayNumbersTwo.removeAll()
+        //stayNumbersOne.removeAll()
+        //numberTwo = 0
+        //numberOne = 0
         
         if component == 0 {
+            numberOne = 0
+            stayNumbersOne.removeAll()
               switch row{
               case 0:
               for blah in emps{
@@ -183,6 +183,8 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
         
         if component == 1 {
+            numberTwo = 0
+            stayNumbersTwo.removeAll()
               switch row{
               case 0:
               for blah in emps{
@@ -279,15 +281,15 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     }
     }
         
-        
+    
         if stayNumbersOne.count == 0{
             var u = 0
             for blah in emps{
                
             if stayNumbersTwo[u] == numberTwo{
             secondViewController.presentt.append(blah)
-            u = u + 1
             }
+            u = u + 1
             }
         }
         
@@ -297,8 +299,8 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
                
             if stayNumbersOne[u] == numberOne{
             secondViewController.presentt.append(blah)
-            u = u + 1
             }
+            u = u + 1
             }
         }
         
@@ -306,31 +308,26 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         else{
         
             var u = 0
+            print("using po")
             for blah in emps{
             if stayNumbersOne[u] + stayNumbersTwo[u] == numberTwo + numberOne {
             secondViewController.presentt.append(blah)
-            u = u + 1
+            print(blah)
             }
+            u = u + 1
             }
         }
         
-        
-       self.tableViewOutlet.reloadData()
 
+        secondViewController.presentt = secondViewController.presentt.sorted { (nameOne, nameTwo) -> Bool in
+                    let nameOne = nameOne.lastName
+            let nameTwo = nameTwo.lastName
+                    return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+        }
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        self.tableViewOutlet.reloadData()
     }
               
 
@@ -435,7 +432,6 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "moving"{
         let nvc = segue.destination as! carryOutProfileViewController
-        //nvc.modalPresentationStyle = .fullScreen
         nvc.inc =  secondViewController.presentt
         nvc.incc = select
         nvc.tableView = tableViewOutlet
@@ -458,7 +454,7 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
         //adding options
         alertt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { ale in
-         
+            
             guard let fields = alertt.textFields, fields.count == 3 else{
                 return
             }
@@ -469,6 +465,12 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
             
             self.emps.append(employeeCO.init(f: firstField.text!, l: secondField.text!, numb: numberField.text!))
             secondViewController.presentt = self.emps
+            
+            secondViewController.presentt = secondViewController.presentt.sorted { (nameOne, nameTwo) -> Bool in
+                        let nameOne = nameOne.lastName
+                let nameTwo = nameTwo.lastName
+                        return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+            }
             self.tableViewOutlet.reloadData()
             self.callSave()
         }))
@@ -499,10 +501,20 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
   
 
     func callSave(){
+        
+        emps = emps.sorted { (nameOne, nameTwo) -> Bool in
+        let nameOne = nameOne.lastName
+        let nameTwo = nameTwo.lastName
+        return (nameOne.localizedCaseInsensitiveCompare(nameTwo) == .orderedAscending)
+        }
+        
+        
+        
+        
         let encoder = JSONEncoder()
         if let encoded = try? encoder.encode(emps){
         print("in encoded")
-        UserDefaults.standard.set(encoded, forKey: "theEmployees3")
+        UserDefaults.standard.set(encoded, forKey: "theEmployees5")
         }
         print("saving...")
         print(emps.count)
@@ -514,5 +526,4 @@ class secondViewController: UIViewController,UITableViewDelegate, UITableViewDat
     
 }
     
-
 

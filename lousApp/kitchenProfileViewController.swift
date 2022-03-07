@@ -10,7 +10,6 @@ class kitchenProfileViewController: UIViewController,UITextFieldDelegate, UIText
     @IBOutlet weak var nameOutet: UILabel!
     @IBOutlet weak var lastOutlet: UILabel!
     @IBOutlet weak var phoneeOutelt: UIButton!
-    @IBOutlet weak var pay: UILabel!
     @IBOutlet weak var diSwitch: UISwitch!
     @IBOutlet weak var paSwitch: UISwitch!
     @IBOutlet weak var apSwitch: UISwitch!
@@ -19,6 +18,7 @@ class kitchenProfileViewController: UIViewController,UITextFieldDelegate, UIText
     @IBOutlet weak var toSwitcg: UISwitch!
     @IBOutlet weak var prSwitch: UISwitch!
     @IBOutlet weak var notesOutlet: UITextView!
+    @IBOutlet weak var payButton: UILabel!
     @IBOutlet weak var saSwitch: UISwitch!
     
     override func viewDidLoad() {
@@ -28,6 +28,7 @@ class kitchenProfileViewController: UIViewController,UITextFieldDelegate, UIText
         phoneeOutelt.setTitle(inc[incc].phone, for: .normal)
         notesOutlet.text! = inc[incc].notes
         notesOutlet.delegate = self
+        self.setupLabelTap()
         setAllSkills()
        
 
@@ -67,11 +68,18 @@ class kitchenProfileViewController: UIViewController,UITextFieldDelegate, UIText
     
     //settng pay
     func setPay(){
-    payy = 11
+    payy = inc[incc].empPay
     var add = inc[incc].di + inc[incc].pa + inc[incc].ap + inc[incc].st + inc[incc].ov + inc[incc].sa + inc[incc].to + inc[incc].pr
-    payy = payy + 0.25 * Double(add)
-    pay.text = "$\(String(payy))"
+    payy = payy + 0.50 * Double(add)
+    payButton.text = "$\(String(payy))"
     }
+    
+ 
+    
+    
+    
+    
+    
     
     
     //changing values with the switch
@@ -216,8 +224,50 @@ class kitchenProfileViewController: UIViewController,UITextFieldDelegate, UIText
     
     
     
-    
+    //pay change label stuff
 
+    
+    @objc func labelTapped(_ sender: UITapGestureRecognizer) {
+        
+        let alertt = UIAlertController(title: "Change Base Pay?", message: "Enter new pay information.", preferredStyle: .alert);            alertt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertt.addAction(UIAlertAction(title: "Continue", style: .default, handler: { [self] ale in
+            guard let fields = alertt.textFields, fields.count == 1 else{
+            return
+            }
+            
+            let newPay = fields[0]
+            self.inc[self.incc].empPay = Double(newPay.text!)!
+            self.setPay()
+            }))
+    
+            //adding fields
+           alertt.addTextField { field in
+           field.placeholder = "New Pay"
+           field.returnKeyType = .next
+           field.keyboardType = .default
+            }
+           
+            present(alertt, animated: true)
+}
+        
+    
+    
+    
+    
+    func setupLabelTap() {
+    let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.labelTapped(_:)))
+    self.payButton.isUserInteractionEnabled = true
+    self.payButton.addGestureRecognizer(labelTap)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
     
     
